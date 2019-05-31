@@ -1,4 +1,4 @@
-package thanos.skoulopoulos;
+package thanos.skoulopoulos.stores;
 
 public class Store {
 

@@ -3,15 +3,16 @@ package thanos.skoulopoulos;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import thanos.skoulopoulos.stores.Store;
+import thanos.skoulopoulos.stores.StoresService;
 
-import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         Scanner scanner =  new Scanner(System.in);
@@ -31,6 +32,8 @@ public class Main {
             }
         });
 
+        TimeUnit.SECONDS.sleep(1);
+
         System.out.println("insert new id");
         int newId = scanner.nextInt();
         System.out.println("insert name");
@@ -43,9 +46,15 @@ public class Main {
         Store store = new Store(newId,newName,newAddress,newWebsite);
         storesService.createStore(store);
 
+        TimeUnit.SECONDS.sleep(1);
 
 
 
+        System.out.println(" ");
+        System.out.println("choose a store by id to delete");
+
+
+        storesService.deleteStore(scanner.nextInt());
 
 
     }

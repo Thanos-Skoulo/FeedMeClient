@@ -1,9 +1,8 @@
 package thanos.skoulopoulos;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.*;
+import thanos.skoulopoulos.stores.Store;
 
 import java.util.ArrayList;
 
@@ -13,5 +12,8 @@ public interface FeedMeApi {
     Call<ArrayList<Store>> getStores();
 
     @POST("stores/new")
-    Call<Store> createStore(@Body Store store);
+    Call<ApiResult<Store>> createStore(@Body Store store);
+
+    @DELETE("stores/{id}")
+    Call<ApiResult<Integer>> deleteStore(@Path ("id") int id);
 }
